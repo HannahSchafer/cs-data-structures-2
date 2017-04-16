@@ -25,11 +25,7 @@ class Node(object):
             >>> a.get_num_children()
             2
         """
-
-        # FIXME
-
-        pass
-
+        return len(self.children)
 
 class Tree(object):
     """Tree."""
@@ -93,8 +89,16 @@ class Tree(object):
 
         """
 
-        # FIXME
-        pass
+        to_visit = [self.root]
+
+        while to_visit:
+            node = to_visit.pop(0)
+
+            if node.data == data:
+                return node
+
+            to_visit.extend(node.children)
+
 
 if __name__ == "__main__":
     import doctest

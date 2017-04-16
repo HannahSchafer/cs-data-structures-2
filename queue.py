@@ -53,9 +53,13 @@ class Queue(object):
             3
         """
 
-        # FIXME
-
-        pass
+        self._length += 1
+        node = Node(item)
+        if self._tail:
+            self._tail.next = node
+            self._tail = node 
+        else:
+            self._head = self._tail = node
 
     def peek(self):
         """Return but don't remove the first item in the queue.
@@ -72,9 +76,10 @@ class Queue(object):
             <Queue ['buy flight', 'pack', 'enjoy vacation']>
         """
 
-        # FIXME
-
-        pass
+        if self._head:
+            return self._head
+        else:
+            return None 
 
 if __name__ == "__main__":
     import doctest
